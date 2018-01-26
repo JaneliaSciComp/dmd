@@ -66,4 +66,5 @@ E = mean(mean((camera_image_in_dmd_space-dmd_image).^2))  %#ok<NOPTS>
 
 % Package up the parameters, store in disk file
 transform_file_name = sprintf('transform-parameters-for-%0.1fx-tube.mat', tube_magnification) ;
-save(transform_file_name, 'debarrel_parameter', 'transform_to_dmd_space_from_debarreled_camera_space', 'dmd_reference_frame') ;
+transform_file_path = fullfile( fileparts( mfilename('fullpath') ), transform_file_name) ;
+save(transform_file_path, 'debarrel_parameter', 'transform_to_dmd_space_from_debarreled_camera_space', 'dmd_reference_frame') ;
