@@ -18,16 +18,17 @@ dmd_from_file(<dmd_image_file_name>, ...
 
 This will generate a file named <dmd_image_file_name> in the current
 Matlab working folder, which can then be fed into the DMD software to
-generate an illumination patten in the image plane that is (hopefully)
-close to that in <camera_image_file_name>.  <tube_magnification> is
-the tube lens magnification, typically 0.5 or 1.0 in Amrita's rig.
+generate an illumination pattern in the image plane that is
+(hopefully) close to that in <camera_image_file_name>.
+<tube_magnification> is the tube lens magnification, typically 0.5 or
+1.0 in Amrita's rig.
 
 To do (or re-do) the calibration, use the DMD software to load
-dmd-alhabet-image.png, and project it onto a uniform and flat fluorescent
-slide.  Take an image with the camera, and save it to, say,
-camera-alphabet-image-with-0.5x-tube.tif (assuming you're using the
-0.5x tube lens---the calibration has to be done separately for each
-tube lens).
+dmd-alhabet-image.png, and project it onto a uniform and flat
+fluorescent slide.  Take an image with the camera, and save it to,
+say, camera-alphabet-image-with-0.5x-tube.tif (assuming you're using
+the 0.5x tube lens---the calibration has to be done separately for
+each tube lens).
 
 Next, delete any existing
 fiducial-points-for-0.5x-tube.mat file, and run (in Matlab):

@@ -1,4 +1,7 @@
 function dmd_image = dmd_image_from_desired_camera_image(camera_image, tube_magnification)
+    % Outputs the image that you should feed into the DMD so that the desired
+    % camera_image appears in the image plane of the microscope.
+    
     transform_file_name = sprintf('transform-parameters-for-%0.1fx-tube.mat', tube_magnification) ;
     transform_file_path = fullfile(fileparts(mfilename('full')), transform_file_name) ;
     s = load(transform_file_path) ;
