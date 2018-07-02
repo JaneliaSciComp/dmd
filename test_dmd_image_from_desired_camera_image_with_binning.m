@@ -2,11 +2,13 @@ close all ;
 clear;
 
 camera_offset = [0 0] ;
-camera_binning = 1 ;
+camera_binning = 4 ;
 
 tube_magnification = 0.5 ;
 raw_camera_image_file_name = sprintf('camera-alphabet-image-with-%0.1fx-tube.png', tube_magnification) ;
-raw_camera_image = imread(raw_camera_image_file_name) ;
+raw_camera_image_full = imread(raw_camera_image_file_name) ;
+im = conv2(raw_camera_image_full, (1/camera_binning^2)*ones(camera_binning), 'valid') ;
+raw_camera_image = im(1:camera_binning:end, 1:camera_binning:end) ;
 raw_camera_image_max = double(max(raw_camera_image(:))) ;
 camera_image = uint8(255/raw_camera_image_max*double(raw_camera_image)) ;
 figure; imshow(camera_image) ;
@@ -30,7 +32,9 @@ title(sprintf('Comparison of original DMD image (green), and matched image (red)
 
 tube_magnification = 1 ;
 raw_camera_image_file_name = sprintf('camera-alphabet-image-with-%0.1fx-tube.png', tube_magnification) ;
-raw_camera_image = imread(raw_camera_image_file_name) ;
+raw_camera_image_full = imread(raw_camera_image_file_name) ;
+im = conv2(raw_camera_image_full, (1/camera_binning^2)*ones(camera_binning), 'valid') ;
+raw_camera_image = im(1:camera_binning:end, 1:camera_binning:end) ;
 raw_camera_image_max = double(max(raw_camera_image(:))) ;
 camera_image = uint8(255/raw_camera_image_max*double(raw_camera_image)) ;
 figure; imshow(camera_image) ;
