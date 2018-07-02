@@ -14,14 +14,22 @@ To generate a DMD illumination image from a camera illumination image
 
 dmd_from_file(<dmd_image_file_name>, ...
               <camera_image_file_name>, ...
-              <tube_magnification>) ;
+              <tube_magnification>, ...
+              <camera_image_offset>, ...
+              <camera_binning>) ;
 
 This will generate a file named <dmd_image_file_name> in the current
 Matlab working folder, which can then be fed into the DMD software to
 generate an illumination pattern in the image plane that is
 (hopefully) close to that in <camera_image_file_name>.
 <tube_magnification> is the tube lens magnification, typically 0.5 or
-1.0 in Amrita's rig.
+1.0 in Amrita's rig.  <camera_image_offset> is the offset of the image
+on the camera sensor, as a 2x1 vector, with the first element the
+number of rows, and the second the number of columns.  If not provided
+or empty, <camera_image_offset> defaults to [0 0], meaning no offset.
+<camera_binning> is the number of sensor pixels per camera image pixel
+(assumed the same in x and y).  If not provided or empty, it defaults
+to 1.
 
 To do (or re-do) the calibration, use the DMD software to load
 dmd-alhabet-image.png, and project it onto a uniform and flat
@@ -86,6 +94,4 @@ then use this image as the <camera_image_file_name> input to
 dmd_from_file().
 
 ALT
-2018-05-08
-
-
+2018-07-02

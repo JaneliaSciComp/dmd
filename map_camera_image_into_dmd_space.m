@@ -4,7 +4,6 @@ function camera_image_in_dmd_space = map_camera_image_into_dmd_space(camera_imag
                                                                      dmd_reference_frame, ...
                                                                      camera_image_offset, ...
                                                                      camera_image_binning)
-    sensor_size = [2048 2048] ; 
     if ~exist('camera_image_offset', 'var') || isempty(camera_image_offset) , 
         camera_image_offset = [ 0 0 ] ;  % rows, columns on sensor
     end
@@ -14,6 +13,7 @@ function camera_image_in_dmd_space = map_camera_image_into_dmd_space(camera_imag
 
     % Transform the possibly offset and binned camera image to a full-size
     % camera image
+    sensor_size = [2048 2048] ; 
     camera_image_size = size(camera_image) ;
     input_view = imref2d(camera_image_size, ...
                          0.5 + camera_image_offset(2) + [0 camera_image_binning*camera_image_size(2)], ...
